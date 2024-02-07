@@ -36,11 +36,11 @@ The software is written using the arduino framwork for the ESP32. Also you need 
 
  ### GPIO Mapping
  For the GPIOs used these are not the arduino default ones, as they needed to be modified for the OLED. The following pins are used:
-
+Pins altered from original to use only inside header pins on double row esp32 mini d1 board
 ## I²C:
 | GPIO PIN  | Function  |
 |-----------|-----------|
-|  GPIO04   |  SCL      |
+|  GPIO16   |  SCL      |
 |  GPIO05   |  SDA      |
 |           |           |
 
@@ -49,6 +49,6 @@ The software is written using the arduino framwork for the ESP32. Also you need 
 |-----------|---------------|
 | GPIO13    | UART RX       |
 | GPIO15    | UART TX       |
-| GPIO25    | PPS Interrupt |
+| GPIO22    | PPS Interrupt |
 
 For more inforamtion have a look at: https://www.elektormagazine.com/labs/mini-ntp-server-with-gps
