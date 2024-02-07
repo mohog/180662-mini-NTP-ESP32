@@ -94,7 +94,7 @@
 
 #define  GPSBAUD ( 9600 )
 
-#define MAX_SRV_CLIENTS ( 5 )
+#define MAX_SRV_CLIENTS ( 12 )
 
 /* For GPS Module Debug */
 WiFiServer TelnetServer(23);
@@ -122,8 +122,8 @@ NTP_Server NTPServer;
 //U8G2_SSD1306_128X64_NONAME_F_HW_I2C oled_right(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
 /* As we use a pointer to the oled we need to make sure it's the same type as out displays */
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C oled_left(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 4, /* data=*/ 5);
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C oled_right(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 4, /* data=*/ 5);
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C oled_left(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 16, /* data=*/ 5);
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C oled_right(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 16, /* data=*/ 5);
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C* oled_ptr=NULL;
 
 
@@ -133,7 +133,7 @@ SemaphoreHandle_t xSemaphore = NULL;
 SemaphoreHandle_t xi2cmtx = NULL;
 
 //Used for the PPS interrupt 
-const byte interruptPin = 25;
+const byte interruptPin = 22;
 
 
 volatile uint32_t UptimeCounter=0;
@@ -260,7 +260,7 @@ void setup()
   TelnetServer.setNoDelay(true);
   gps_config = read_gps_config();
   /* We reassign the I2C Pins to 4 and 5 with 100kHz */
-  Wire.begin(5,4,100000);
+  Wire.begin(5,16,100000);
 
 
   /* This will check if the RTC is on the I2C */
